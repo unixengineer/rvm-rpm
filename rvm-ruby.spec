@@ -8,7 +8,7 @@ Name: rvm-ruby
 Summary: Ruby Version Manager (including Rubies and Gems)
 Version: 4  # Commit date will be appended
 # pick a RVM version from https://github.com/wayneeseguin/rvm/tags
-Release: 1.20.10
+Release: 1.29.10
 License: ASL 2.0
 URL: http://rvm.io/
 Group: Applications/System
