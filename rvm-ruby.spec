@@ -48,8 +48,8 @@ for i in $(env | grep ^rvm_ | cut -d"=" -f1); do
 done
 
 # Install everything into one directory
-mkdir %{buildroot}
-HOME=%{buildroot} gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 
+mkdir -p %{buildroot}%{rvm_dir}
+HOME=%{buildroot}%{rvm_dir} gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 (
 export rvm_ignore_rvmrc=1 \
   rvm_user_install_flag=0 \
@@ -156,7 +156,7 @@ for f in $(find $br -type l); do
     dest=$(readlink $f)
     # relative symlinks have $dest not starting with a /
     first_step=$(echo $dest | cut -d / -f1)
-    # absolute paths have a void first_step 
+    # absolute paths have a void first_step
     if [ -z "$first_step" ] ; then
   # destination is an absolute path, let's fix it
 	# call readlink with -f so all symlinmks are solved
