@@ -48,6 +48,7 @@ for i in $(env | grep ^rvm_ | cut -d"=" -f1); do
 done
 
 # Install everything into one directory
+HOME=%{buildroot} gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 
 (
 export rvm_ignore_rvmrc=1 \
   rvm_user_install_flag=0 \
