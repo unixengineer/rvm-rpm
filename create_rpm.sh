@@ -11,7 +11,7 @@ fi
 set -e
 set -x
 
-specfile=`find rpm -name \*.spec |head -1`
+specfile="rvm-ruby.spec"
 test -z "$specfile" && exit -1
 
 specfile=`basename $specfile`
