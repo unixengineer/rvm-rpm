@@ -12,18 +12,14 @@ set -e
 set -x
 
 specfile="rvm-ruby.spec"
-test -z "$specfile" && exit -1
-
-specfile=`basename $specfile`
-
-name=`grep -P '^Name:\s+' rpm/$specfile |awk '{print $2}'`
+name=`grep -P '^Name:\s+' $specfile |awk '{print $2}'`
 commitdate=`git log -1 --format="%ct"`
-version=`grep -P '^Version:\s+' rpm/$specfile |awk '{print $2}'`.$commitdate
+version=`grep -P '^Version:\s+' $specfile |awk '{print $2}'`.$commitdate
 #release=`grep -P '^Release:\s+' rpm/$specfile |awk '{print $2}'`
 
 rm -rf rpmbuild
 mkdir -p rpmbuild/{BUILD,RPMS,SOURCES/$name-$version,SPECS,SRPMS,tmp}
-cp -a rpm/$specfile rpmbuild/SPECS
+cp -a $specfile rpmbuild/SPECS
 sed -i "s/^[\t ]*Version:.*\$/Version: ${version}/" rpmbuild/SPECS/$specfile
 #tar --exclude-vcs --exclude='rpmbuild' --exclude='rpm' -cp * | (cd rpmbuild/SOURCES/$name-$version ; tar xp)
 
