@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o xtrace
+set -x
 RUBY_VERSION="2.7.1"
 RUBY_DOWNLOAD_URL="https://ftp.ruby-lang.org/pub/ruby/$(echo \"${RUBY_VERSION}\" | cut -f1-2 -d'.')"
 RUBYGEMS_VERSION="2.4.6"
@@ -10,7 +10,8 @@ RVM_ARCHIVE_PATH="/usr/local/rvm/archives"
 # Install the yum dependencies to build rvm
 yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
 yum -y install wget sudo java-11-openjdk-devel git rpm-build redhat-rpm-config chrpath readline-devel zlib-devel libyaml-devel libffi-devel openssl-devel which sqlite-devel
-yum clean all && yum -y groupinstall "Development tools"
+# Uncomment this if you think your docker build env does not have the right tools
+#yum clean all && yum -y groupinstall "Development tools"
 
 # Now install RVM
 curl -sSL https://github.com/rvm/rvm/tarball/stable -o rvm-stable.tar.gz
@@ -29,11 +30,12 @@ fi
 curl ${RUBY_DOWNLOAD_URL}/ruby-${RUBY_VERSION}.tar.bz2 -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
 curl ${RUBYGEMS_DOWNLOAD_URL}/rubygems-${RUBYGEMS_VERSION}.tgz -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
 curl ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
-
+set +x
 ls -la ${RVM_ARCHIVE_PATH}/
 
 #echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
 #echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
+
 source /etc/profile.d/rvm.sh
 rvm autolibs read-fail
 #rvm requirements
