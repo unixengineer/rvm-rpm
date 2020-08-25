@@ -25,11 +25,13 @@ else
 	exit 1
 fi
 
-curl -sSL ${RUBY_DOWNLOAD_URL}/ruby-${RUBY_VERSION}.tar.bz2 -o ruby-${RUBY_VERSION}.tar.bz2
-curl -sSL ${RUBYGEMS_DOWNLOAD_URL}/rubygems-${RUBYGEMS_VERSION}.tgz -o rubygems-${RUBYGEMS_VERSION}.tgz
-curl -sSL ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o yaml-${YAML_VERSION}.tar.gz
+curl -sSL ${RUBY_DOWNLOAD_URL}/ruby-${RUBY_VERSION}.tar.bz2 -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
+curl -sSL ${RUBYGEMS_DOWNLOAD_URL}/rubygems-${RUBYGEMS_VERSION}.tgz -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
+curl -sSL ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
 [[ -d ${RVM_ARCHIVE_PATH} ]] || mkdir -p ${RVM_ARCHIVE_PATH}
-mv ruby-${RUBY_VERSION}.tar.bz2 rubygems-${RUBYGEMS_VERSION}.tgz yaml-${YAML_VERSION}.tar.gz ${RVM_ARCHIVE_PATH}
+
+ls -la ${RVM_ARCHIVE_PATH}/
+
 echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
 echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
 source /etc/profile.d/rvm.sh
