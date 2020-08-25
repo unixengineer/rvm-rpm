@@ -43,5 +43,6 @@ rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION} --default
 rvm list
 ruby --version
-gem install fpm --no-ri --no-rdoc
+gem install fpm --no-document
+
 
