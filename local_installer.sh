@@ -45,4 +45,5 @@ echo "Here is where we start the process ....."
 rvm mount -r /usr/local/rvm/archives/ruby-${RUBY_VERSION}.tar.bz2
 rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION} --default
+ruby --version
 
