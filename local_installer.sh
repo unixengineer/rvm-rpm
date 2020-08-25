@@ -1,4 +1,5 @@
 #!/bin/bash
+set +x
 RUBY_VERSION="${RUBY_VERSION:-2.7.1}"
 RUBYGEMS_VERSION="${RUBYGEMS_VERSION:-3.1.4}"
 YAML_VERSION="${YAML_VERSION:-0.1.6}"
@@ -33,7 +34,7 @@ fi
 curl ${RUBY_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
 curl ${RUBYGEMS_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
 curl ${YAML_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
-
+set -x 
 
 
 source /etc/profile.d/rvm.sh
