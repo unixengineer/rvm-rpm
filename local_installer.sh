@@ -29,11 +29,14 @@ curl -sSL ${RUBY_DOWNLOAD_URL}/ruby-${RUBY_VERSION}.tar.bz2 -o ruby-${RUBY_VERSI
 curl -sSL ${RUBYGEMS_DOWNLOAD_URL}/rubygems-${RUBYGEMS_VERSION}.tgz -o rubygems-${RUBYGEMS_VERSION}.tgz
 curl -sSL ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o yaml-${YAML_VERSION}.tar.gz
 [[ -d ${RVM_ARCHIVE_PATH} ]] || mkdir -p ${RVM_ARCHIVE_PATH}
-echo rvm_archives_path=${RVM_ARCHIVE_PATH} >> ~/.rvmrc
-echo rvm_archives_path=${RVM_ARCHIVE_PATH} >> /etc/rvmrc
-source /etc/rvmrc
+echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
+echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
+source /etc/profile.d/rvm.sh
 rvm autolibs read-fail
 #rvm requirements
+echo "" > ~/.rvm/gemsets/default.gems
+echo "" > ~/.rvm/gemsets/global.gems
+
 rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION} --default
 
