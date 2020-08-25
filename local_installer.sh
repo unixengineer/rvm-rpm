@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+
 RUBY_VERSION="${RUBY_VERSION:-2.7.1}"
 RUBY_DOWNLOAD_URL="https://rvm_io.global.ssl.fastly.net/binaries/centos/7/x86_64/ruby-${RUBY_VERSION}.tar.bz2"
 RUBYGEMS_VERSION="${RUBYGEMS_VERSION:-3.1.4}"
@@ -42,4 +43,5 @@ rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION} --default
 rvm list
 ruby --version
+gem install fpm --no-ri --no-rdoc
 
