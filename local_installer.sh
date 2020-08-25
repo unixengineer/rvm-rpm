@@ -1,7 +1,7 @@
 #!/bin/bash
-
+set -o xtrace
 RUBY_VERSION="2.7.1"
-RUBY_DOWNLOAD_URL="https://ftp.ruby-lang.org/pub/ruby/$(echo \"${RUBY_VERSION}\" | cut -f1-2 -d\".\")"
+RUBY_DOWNLOAD_URL="https://ftp.ruby-lang.org/pub/ruby/$(echo \"${RUBY_VERSION}\" | cut -f1-2 -d'.')"
 RUBYGEMS_VERSION="2.4.6"
 RUBYGEMS_DOWNLOAD_URL="http://production.cf.rubygems.org/rubygems"
 YAML_VERSION="0.1.6"
@@ -26,9 +26,9 @@ else
 fi
 
 [[ -d ${RVM_ARCHIVE_PATH} ]] || mkdir -p ${RVM_ARCHIVE_PATH}
-curl -sSL ${RUBY_DOWNLOAD_URL}/ruby-${RUBY_VERSION}.tar.bz2 -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
-curl -sSL ${RUBYGEMS_DOWNLOAD_URL}/rubygems-${RUBYGEMS_VERSION}.tgz -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
-curl -sSL ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
+curl ${RUBY_DOWNLOAD_URL}/ruby-${RUBY_VERSION}.tar.bz2 -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
+curl ${RUBYGEMS_DOWNLOAD_URL}/rubygems-${RUBYGEMS_VERSION}.tgz -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
+curl ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
 
 ls -la ${RVM_ARCHIVE_PATH}/
 
