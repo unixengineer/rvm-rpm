@@ -32,9 +32,10 @@ curl -sSL ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o ${RVM_ARCHIVE_PATH
 
 ls -la ${RVM_ARCHIVE_PATH}/
 
-echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
-echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
+#echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
+#echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
 source /etc/profile.d/rvm.sh
+cat /etc/profile.d/rvm.sh
 rvm autolibs read-fail
 #rvm requirements
 echo "" > ~/.rvm/gemsets/default.gems
