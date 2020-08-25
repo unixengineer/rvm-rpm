@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RUBY_VERSION="2.7.1"
-RUBY_DOWNLOAD_URL="https://ftp.ruby-lang.org/pub/ruby/$(echo "${RUBY_VERSION}" | cut -f1-2 -d"."/")
+RUBY_DOWNLOAD_URL="https://ftp.ruby-lang.org/pub/ruby/$(echo \"${RUBY_VERSION}\" | cut -f1-2 -d\".\")"
 RUBYGEMS_VERSION="2.4.6"
 RUBYGEMS_DOWNLOAD_URL="http://production.cf.rubygems.org/rubygems"
 YAML_VERSION="0.1.6"
