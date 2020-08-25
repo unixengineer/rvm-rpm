@@ -1,5 +1,4 @@
 #!/bin/bash
-set -o xtrace
 RUBY_VERSION="${RUBY_VERSION:-2.7.1}"
 RUBYGEMS_VERSION="${RUBYGEMS_VERSION:-3.1.4}"
 YAML_VERSION="${YAML_VERSION:-0.1.6}"
@@ -14,10 +13,10 @@ YAML_DOWNLOAD_URL="http://pyyaml.org/download/libyaml/yaml-${YAML_VERSION}.tar.g
 RVM_ARCHIVE_PATH="/usr/local/rvm/archives"
 # Install the yum dependencies to build rvm
 yum -y install wget sudo java-11-openjdk-devel git rpm-build redhat-rpm-config chrpath readline-devel zlib-devel libyaml-devel libffi-devel openssl-devel which sqlite-devel
-# Uncomment this if you think your docker build env does not have the right tools
+## Uncomment this if you think your docker build env does not have the right tools
 #yum clean all && yum -y groupinstall "Development tools"
 
-# Now install RVM
+## Now install RVM
 curl -L ${RVM_DOWNLOAD_URL} -o rvm-stable.tar.gz
 mkdir rvm && cd rvm
 tar --strip-components=1 -xzf ../rvm-stable.tar.gz
@@ -45,6 +44,7 @@ rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION} --default
 rvm list
 ruby --version
-gem install fpm --no-document
+## To test if gem is installing things properly...
+# gem install fpm --no-document
 
 
