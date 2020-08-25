@@ -31,6 +31,10 @@ curl -sSL ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o yaml-${YAML_VERSIO
 [[ -d ${RVM_ARCHIVE_PATH} ]] || mkdir -p ${RVM_ARCHIVE_PATH}
 echo rvm_archives_path=${RVM_ARCHIVE_PATH} >> ~/.rvmrc
 echo rvm_archives_path=${RVM_ARCHIVE_PATH} >> /etc/rvmrc
+source /etc/rvmrc
 rvm autolibs read-fail
+rvm requirements
+rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
+rvm use ${RUBY_VERSION} --default
 
 
