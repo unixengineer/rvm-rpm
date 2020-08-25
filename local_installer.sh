@@ -9,7 +9,7 @@ YAML_DOWNLOAD_URL="http://pyyaml.org/download/libyaml"
 RVM_ARCHIVE_PATH="/usr/local/rvm/archives"
 # Install the yum dependencies to build rvm
 yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
-yum -y install wget sudo java-11-openjdk-devel git rpm-build redhat-rpm-config chrpath readline-devel zlib-devel libyaml-devel libffi-devel openssl-devel which
+yum -y install wget sudo java-11-openjdk-devel git rpm-build redhat-rpm-config chrpath readline-devel zlib-devel libyaml-devel libffi-devel openssl-devel which sqlite-devel
 yum clean all && yum -y groupinstall "Development tools"
 
 # Now install RVM
@@ -33,7 +33,7 @@ echo rvm_archives_path=${RVM_ARCHIVE_PATH} >> ~/.rvmrc
 echo rvm_archives_path=${RVM_ARCHIVE_PATH} >> /etc/rvmrc
 source /etc/rvmrc
 rvm autolibs read-fail
-rvm requirements
+#rvm requirements
 rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION} --default
 
