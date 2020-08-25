@@ -32,14 +32,9 @@ curl ${YAML_DOWNLOAD_URL}/yaml-${YAML_VERSION}.tar.gz -o ${RVM_ARCHIVE_PATH}/yam
 set +x
 ls -la ${RVM_ARCHIVE_PATH}/
 
-#echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
-#echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
 
 source /etc/profile.d/rvm.sh
 rvm autolibs read-fail
-#rvm requirements
-echo "" > ~/.rvm/gemsets/default.gems
-echo "" > ~/.rvm/gemsets/global.gems
 
 echo "Here is where we start the process ....."
 rvm mount -r /usr/local/rvm/archives/ruby-${RUBY_VERSION}.tar.bz2
