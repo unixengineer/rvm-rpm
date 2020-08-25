@@ -39,10 +39,9 @@ rvm autolibs read-fail
 #rvm requirements
 echo "" > ~/.rvm/gemsets/default.gems
 echo "" > ~/.rvm/gemsets/global.gems
-env|sort
 
 echo "Here is where we start the process ....."
 rvm mount -r /usr/local/rvm/archives/ruby-${RUBY_VERSION}.tar.bz2
-rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION} --verify-downloads 2 --disable-binary
+rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION}
 rvm use ${RUBY_VERSION}
 
