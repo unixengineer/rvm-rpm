@@ -18,7 +18,7 @@ yum -y install wget sudo java-11-openjdk-devel git rpm-build redhat-rpm-config c
 #yum clean all && yum -y groupinstall "Development tools"
 
 # Now install RVM
-curl ${RVM_DOWNLOAD_URL} -o rvm-stable.tar.gz
+curl -L ${RVM_DOWNLOAD_URL} -o rvm-stable.tar.gz
 mkdir rvm && cd rvm
 tar --strip-components=1 -xzf ../rvm-stable.tar.gz
 ./install --auto-dotfiles # RVM will be installed in /usr/local/rvm
@@ -31,9 +31,9 @@ else
 fi
 
 [[ -d ${RVM_ARCHIVE_PATH} ]] || mkdir -p ${RVM_ARCHIVE_PATH}
-curl ${RUBY_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
-curl ${RUBYGEMS_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
-curl ${YAML_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
+curl -L ${RUBY_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/ruby-${RUBY_VERSION}.tar.bz2
+curl -L ${RUBYGEMS_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/rubygems-${RUBYGEMS_VERSION}.tgz
+curl -L ${YAML_DOWNLOAD_URL} -o ${RVM_ARCHIVE_PATH}/yaml-${YAML_VERSION}.tar.gz
 
 
 source /etc/profile.d/rvm.sh
