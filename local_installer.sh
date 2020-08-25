@@ -20,10 +20,10 @@ tar --strip-components=1 -xzf ../rvm-stable.tar.gz
 ./install --auto-dotfiles # RVM will be installed in /usr/local/rvm
 if [ -f /etc/profile.d/rvm.sh ]
 then
->---source /etc/profile.d/rvm.sh
+	source /etc/profile.d/rvm.sh
 else
->---echo "RVM Installation encountered an error"
->---exit 1
+	echo "RVM Installation encountered an error"
+	exit 1
 fi
 
 [[ -d ${RVM_ARCHIVE_PATH} ]] || mkdir -p ${RVM_ARCHIVE_PATH}
