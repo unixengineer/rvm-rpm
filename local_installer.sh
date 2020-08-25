@@ -6,7 +6,7 @@ RUBYGEMS_VERSION="2.4.6"
 RUBYGEMS_DOWNLOAD_URL="http://production.cf.rubygems.org/rubygems"
 YAML_VERSION="0.1.6"
 YAML_DOWNLOAD_URL="http://pyyaml.org/download/libyaml"
-RVM_ARCHIVE_PATH="~/.rvm/archives/"
+RVM_ARCHIVE_PATH="/usr/local/rvm/archives"
 # Install the yum dependencies to build rvm
 yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
 yum -y install wget sudo java-11-openjdk-devel git rpm-build redhat-rpm-config chrpath readline-devel zlib-devel libyaml-devel libffi-devel openssl-devel which sqlite-devel
@@ -40,8 +40,8 @@ rvm autolibs read-fail
 #rvm requirements
 echo "" > ~/.rvm/gemsets/default.gems
 echo "" > ~/.rvm/gemsets/global.gems
-env 
+env|sort
+rvm mount -r /usr/local/rvm/archives/ruby-${RUBY_VERSION}.tar.bz2
 rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION} --verify-downloads 2 --disable-binary
 rvm use ${RUBY_VERSION}
-
 
