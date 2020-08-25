@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RUBY_VERSION="2.2.0"
+RUBY_VERSION="2.7.1"
 RUBY_DOWNLOAD_URL="https://ftp.ruby-lang.org/pub/ruby"
 RUBYGEMS_VERSION="2.4.6"
 RUBYGEMS_DOWNLOAD_URL="http://production.cf.rubygems.org/rubygems"
@@ -35,12 +35,13 @@ ls -la ${RVM_ARCHIVE_PATH}/
 #echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a ~/.rvmrc
 #echo rvm_archives_path=${RVM_ARCHIVE_PATH} | tee -a /etc/rvmrc
 source /etc/profile.d/rvm.sh
-cat /etc/profile.d/rvm.sh
 rvm autolibs read-fail
 #rvm requirements
 echo "" > ~/.rvm/gemsets/default.gems
 echo "" > ~/.rvm/gemsets/global.gems
 env|sort
+
+echo "Here is where we start the process ....."
 rvm mount -r /usr/local/rvm/archives/ruby-${RUBY_VERSION}.tar.bz2
 rvm install ${RUBY_VERSION} --rubygems ${RUBYGEMS_VERSION} --verify-downloads 2 --disable-binary
 rvm use ${RUBY_VERSION}
